@@ -205,7 +205,7 @@ class CrCalendar extends StatefulWidget {
   CrCalendar({
     required this.controller,
     required this.initialDate,
-    required this.localeSet,
+    // required this.localeSet,
     this.weekDaysBuilder,
     this.onDayClicked,
     this.firstDayOfWeek = WeekDay.sunday,
@@ -285,7 +285,7 @@ class CrCalendar extends StatefulWidget {
   ///
   /// This Locale String name
   ///
-  final String localeSet;
+  // final String localeSet;
 
   @override
   _CrCalendarState createState() => _CrCalendarState();
@@ -301,7 +301,7 @@ class _CrCalendarState extends State<CrCalendar> {
   @override
   void initState() {
     super.initState();
-    _setLocale(widget.localeSet);
+    // _setLocale(widget.localeSet);
     final date = widget.initialDate;
     widget.controller.date = date;
     widget.controller.addListener(_redraw);

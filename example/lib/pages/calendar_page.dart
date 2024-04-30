@@ -80,7 +80,8 @@ class _CalendarPageState extends State<CalendarPage> {
                 valueListenable: _monthNameNotifier,
                 builder: (ctx, value, child) => Text(
                   value,
-                  style: const TextStyle(fontSize: 16, color: violet, fontWeight: FontWeight.w600),
+                  style: const TextStyle(
+                      fontSize: 16, color: violet, fontWeight: FontWeight.w600),
                 ),
               ),
               IconButton(
@@ -101,8 +102,9 @@ class _CalendarPageState extends State<CalendarPage> {
               maxEventLines: 3,
               controller: _calendarController,
               forceSixWeek: true,
-              localSet: 'ko',
-              dayItemBuilder: (builderArgument) => DayItemWidget(properties: builderArgument),
+              localeSet: 'ko',
+              dayItemBuilder: (builderArgument) =>
+                  DayItemWidget(properties: builderArgument),
               weekDaysBuilder: (day) => WeekDaysWidget(day: day),
               eventBuilder: (drawer) => EventWidget(drawer: drawer),
               onDayClicked: _showDayEventsInModalSheet,
@@ -116,8 +118,9 @@ class _CalendarPageState extends State<CalendarPage> {
   }
 
   /// Control calendar with arrow buttons.
-  void _changeCalendarPage({required bool showNext}) =>
-      showNext ? _calendarController.swipeToNextMonth() : _calendarController.swipeToPreviousPage();
+  void _changeCalendarPage({required bool showNext}) => showNext
+      ? _calendarController.swipeToNextMonth()
+      : _calendarController.swipeToPreviousPage();
 
   void _onCalendarPageChanged(int year, int month) {
     _setTexts(year, month);
@@ -137,7 +140,8 @@ class _CalendarPageState extends State<CalendarPage> {
 
   /// Show [CreateEventDialog] with settings for new event.
   Future<void> _addEvent() async {
-    final event = await showDialog(context: context, builder: (context) => const CreateEventDialog());
+    final event = await showDialog(
+        context: context, builder: (context) => const CreateEventDialog());
     if (event != null) {
       _calendarController.addEvent(event);
     }
@@ -182,9 +186,11 @@ class _CalendarPageState extends State<CalendarPage> {
     );
   }
 
-  void _showDayEventsInModalSheet(List<CalendarEventModel> events, DateTime day) {
+  void _showDayEventsInModalSheet(
+      List<CalendarEventModel> events, DateTime day) {
     showModalBottomSheet(
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(8))),
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(8))),
         isScrollControlled: true,
         context: context,
         builder: (context) => DayEventsBottomSheet(

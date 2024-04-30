@@ -1,3 +1,5 @@
+// ignore_for_file: always_declare_return_types
+
 import 'package:cr_calendar/src/contract.dart';
 import 'package:cr_calendar/src/customization/builders.dart';
 import 'package:cr_calendar/src/extensions/datetime_ext.dart';
@@ -203,6 +205,7 @@ class CrCalendar extends StatefulWidget {
   CrCalendar({
     required this.controller,
     required this.initialDate,
+    required this.localSet,
     this.weekDaysBuilder,
     this.onDayClicked,
     this.firstDayOfWeek = WeekDay.sunday,
@@ -279,6 +282,11 @@ class CrCalendar extends StatefulWidget {
   /// Reduces number of callbacks when [CrCalendarController] goToDate is used.
   final int onSwipeCallbackDebounceMs;
 
+  ///
+  /// This Locale String name
+  ///
+  final String localSet;
+
   @override
   _CrCalendarState createState() => _CrCalendarState();
 }
@@ -293,9 +301,11 @@ class _CrCalendarState extends State<CrCalendar> {
   @override
   void initState() {
     super.initState();
+    _setLocale(widget.localSet);
     final date = widget.initialDate;
     widget.controller.date = date;
     widget.controller.addListener(_redraw);
+
     calculateBoundaries();
     _initialDate = date;
     _recalculateDisplayMonth(0);
@@ -438,5 +448,9 @@ class _CrCalendarState extends State<CrCalendar> {
               .abs() +
           widget.controller.page;
     }
+  }
+
+  _setLocale(String locale) async {
+    await Jiffy.setLocale(locale.isEmpty ? 'ko' : locale);
   }
 }

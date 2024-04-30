@@ -192,8 +192,7 @@ class _CrDatePickerDialogState extends State<CrDatePickerDialog> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     /// Picker title
-                    if (orientation == Orientation.portrait)
-                      _buildPickerTitle(),
+                    if (orientation == Orientation.portrait) _buildPickerTitle(),
 
                     /// Picker control bar.
                     if (_properties.showControlBar)
@@ -208,8 +207,7 @@ class _CrDatePickerDialogState extends State<CrDatePickerDialog> {
                                 child: _properties.backButton ??
                                     const Padding(
                                       padding: EdgeInsets.all(8),
-                                      child:
-                                          Icon(Icons.arrow_back_ios_outlined),
+                                      child: Icon(Icons.arrow_back_ios_outlined),
                                     ),
                               ),
 
@@ -220,19 +218,15 @@ class _CrDatePickerDialogState extends State<CrDatePickerDialog> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(8),
                                   child: Center(
-                                    child: _properties.controlBarTitleBuilder
-                                            ?.call(_date) ??
+                                    child: _properties.controlBarTitleBuilder?.call(_date) ??
                                         Padding(
                                           padding: const EdgeInsets.all(8),
                                           child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                DateFormat('M/yyyy')
-                                                    .format(_date),
-                                                style: const TextStyle(
-                                                    fontSize: 14),
+                                                DateFormat('M/yyyy').format(_date),
+                                                style: const TextStyle(fontSize: 14),
                                               ),
                                               const Icon(Icons.arrow_drop_down),
                                             ],
@@ -252,8 +246,7 @@ class _CrDatePickerDialogState extends State<CrDatePickerDialog> {
                                 child: _properties.forwardButton ??
                                     const Padding(
                                       padding: EdgeInsets.all(8),
-                                      child: Icon(
-                                          Icons.arrow_forward_ios_outlined),
+                                      child: Icon(Icons.arrow_forward_ios_outlined),
                                     ),
                               ),
                           ],
@@ -270,16 +263,14 @@ class _CrDatePickerDialogState extends State<CrDatePickerDialog> {
                             children: [
                               Expanded(
                                 child: DatePickerSettings(
-                                  landscapeDaysResizeMode:
-                                      _properties.landscapeDaysResizeMode,
+                                  landscapeDaysResizeMode: _properties.landscapeDaysResizeMode,
                                   child: _calendarWidget,
                                 ),
                               ),
                               Row(
                                 children: [
                                   Expanded(
-                                    child: _properties.cancelButtonBuilder
-                                            ?.call(_cancelButtonPressed) ??
+                                    child: _properties.cancelButtonBuilder?.call(_cancelButtonPressed) ??
                                         ElevatedButton(
                                           onPressed: _cancelButtonPressed,
                                           child: const Text('Cancel'),
@@ -287,10 +278,8 @@ class _CrDatePickerDialogState extends State<CrDatePickerDialog> {
                                   ),
                                   const SizedBox(width: 32),
                                   Expanded(
-                                    child: _properties.okButtonBuilder?.call(
-                                            _rangeBegin != null
-                                                ? _okButtonPressed
-                                                : null) ??
+                                    child: _properties.okButtonBuilder
+                                            ?.call(_rangeBegin != null ? _okButtonPressed : null) ??
                                         ElevatedButton(
                                           onPressed: _okButtonPressed,
                                           child: const Text('OK'),
@@ -307,14 +296,11 @@ class _CrDatePickerDialogState extends State<CrDatePickerDialog> {
                               color: _properties.backgroundColor,
                               child: YearPickerWidget(
                                 initialYear: _date.year,
-                                minYear: _properties.minDate?.year ??
-                                    Contract.kMinYear,
-                                maxYear: _properties.maxDate?.year ??
-                                    Contract.kMaxYear,
+                                minYear: _properties.minDate?.year ?? Contract.kMinYear,
+                                maxYear: _properties.maxDate?.year ?? Contract.kMaxYear,
                                 yearsPerLine: _getYearPerLineCount(),
                                 onYearTap: _goToYear,
-                                yearPickerItemBuilder:
-                                    _properties.yearPickerItemBuilder,
+                                yearPickerItemBuilder: _properties.yearPickerItemBuilder,
                               ),
                             ),
                         ],
@@ -344,8 +330,7 @@ class _CrDatePickerDialogState extends State<CrDatePickerDialog> {
     final width = size.width;
     final height = size.height;
     final aspectRatio = height / width;
-    if (aspectRatio <=
-        Contract.kTabletAspectRatioH / Contract.kTabletAspectRatioW) {
+    if (aspectRatio <= Contract.kTabletAspectRatioH / Contract.kTabletAspectRatioW) {
       return Size(
         width * Contract.k80PercentMultiplier,
         height * Contract.k80PercentMultiplier,
@@ -399,6 +384,7 @@ class _CrDatePickerDialogState extends State<CrDatePickerDialog> {
       forceSixWeek: _properties.forceSixWeek,
       minDate: _properties.minDate,
       maxDate: _properties.maxDate,
+      localSet: '',
       onSwipeCallbackDebounceMs: 300,
       onRangeSelected: (events, begin, end) {
         _rangeBegin = begin;
@@ -417,8 +403,7 @@ class _CrDatePickerDialogState extends State<CrDatePickerDialog> {
     if (_properties.maxDate == null || _properties.minDate == null) {
       return Contract.kYearsInLine;
     }
-    final yearInLine =
-        (_properties.minDate!.year) - (_properties.maxDate!.year);
+    final yearInLine = (_properties.minDate!.year) - (_properties.maxDate!.year);
     return yearInLine == 0 ? 1 : yearInLine;
   }
 }

@@ -301,7 +301,7 @@ class _CrCalendarState extends State<CrCalendar> {
   @override
   void initState() {
     super.initState();
-    // _setLocale(widget.localeSet);
+    _localeSet(widget.localeSet);
     final date = widget.initialDate;
     widget.controller.date = date;
     widget.controller.addListener(_redraw);
@@ -450,7 +450,7 @@ class _CrCalendarState extends State<CrCalendar> {
     }
   }
 
-  Future<void> localeSet(String locale) async {
+  _localeSet(String locale) async {
     await Jiffy.setLocale(locale.isEmpty ? 'ko' : locale);
   }
 }

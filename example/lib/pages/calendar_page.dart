@@ -102,7 +102,7 @@ class _CalendarPageState extends State<CalendarPage> {
               maxEventLines: 3,
               controller: _calendarController,
               forceSixWeek: true,
-              // localeSet: 'ko',
+              localeSet: 'ko',
               dayItemBuilder: (builderArgument) =>
                   DayItemWidget(properties: builderArgument),
               weekDaysBuilder: (day) => WeekDaysWidget(day: day),

@@ -205,7 +205,7 @@ class CrCalendar extends StatefulWidget {
   CrCalendar({
     required this.controller,
     required this.initialDate,
-    // required this.localeSet,
+    required this.localeSet,
     this.weekDaysBuilder,
     this.onDayClicked,
     this.firstDayOfWeek = WeekDay.sunday,
@@ -285,7 +285,7 @@ class CrCalendar extends StatefulWidget {
   ///
   /// This Locale String name
   ///
-  // final String localeSet;
+  final String localeSet;
 
   @override
   _CrCalendarState createState() => _CrCalendarState();
@@ -450,7 +450,7 @@ class _CrCalendarState extends State<CrCalendar> {
     }
   }
 
-  _setLocale(String locale) async {
+  Future<void> localeSet(String locale) async {
     await Jiffy.setLocale(locale.isEmpty ? 'ko' : locale);
   }
 }

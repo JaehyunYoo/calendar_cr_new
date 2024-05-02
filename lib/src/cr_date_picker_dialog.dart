@@ -399,7 +399,7 @@ class _CrDatePickerDialogState extends State<CrDatePickerDialog> {
       forceSixWeek: _properties.forceSixWeek,
       minDate: _properties.minDate,
       maxDate: _properties.maxDate,
-      // localeSet: '',
+      localeSet: '',
       onSwipeCallbackDebounceMs: 300,
       onRangeSelected: (events, begin, end) {
         _rangeBegin = begin;

@@ -220,6 +220,7 @@ class CrCalendar extends StatefulWidget {
     this.onSwipeCallbackDebounceMs = 100,
     this.minDate,
     this.maxDate,
+    this.isOutOfWeekDayClickEvent = true,
     super.key,
   })  : assert(maxEventLines <= 6, 'maxEventLines should be less then 6'),
         assert(minDate == null || maxDate == null || minDate.isBefore(maxDate),
@@ -287,6 +288,12 @@ class CrCalendar extends StatefulWidget {
   ///
   final String localeSet;
 
+  ///
+  /// This out of week day is click event
+  ///
+
+  final bool? isOutOfWeekDayClickEvent;
+
   @override
   _CrCalendarState createState() => _CrCalendarState();
 }
@@ -343,6 +350,9 @@ class _CrCalendarState extends State<CrCalendar> {
                 currentDay: _returnCurrentDayForDateOrNull(month),
                 touchMode: widget.touchMode,
                 onDayTap: (day) {
+                  if (!widget.isOutOfWeekDayClickEvent!) {
+                    return;
+                  }
                   _scrollOnUnboundMonth(day);
                 },
                 onRangeSelected: (events) {

@@ -20,7 +20,11 @@ final class EventProperties {
     required this.end,
     required this.name,
     required this.backgroundColor,
+    this.type,
   });
+
+  /// Event Type
+  String? type;
 
   /// Begin day number.
   int begin; // min 1 / max 7

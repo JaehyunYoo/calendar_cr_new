@@ -7,9 +7,11 @@ final class CalendarEventModel {
     required this.end,
     this.eventColor = Colors.green,
     this.type,
+    this.textColor,
   });
 
   String? type;
+  Color? textColor;
   String name;
   DateTime begin;
   DateTime end;

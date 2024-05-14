@@ -21,6 +21,7 @@ final class EventProperties {
     required this.name,
     required this.backgroundColor,
     this.type,
+    this.textColor,
   });
 
   /// Event Type
@@ -32,6 +33,7 @@ final class EventProperties {
   int end; // min 1 / max 7
   /// Background color.
   Color backgroundColor;
+  Color? textColor;
 
   /// Name displayed at start of the event widget.
   String name;

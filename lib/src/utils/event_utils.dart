@@ -105,6 +105,7 @@ EventProperties? _mapSimpleEventToDrawerOrNull(
     begin: beginDay,
     end: endDay,
     name: event.name,
+    textColor: event.textColor,
     backgroundColor: event.eventColor,
   );
 }
